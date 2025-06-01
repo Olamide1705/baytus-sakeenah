@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -13,17 +13,17 @@ function App() {
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', (e) => {
         e.preventDefault();
         
-        const href = this.getAttribute('href');
+        const href = (e.currentTarget as HTMLAnchorElement)?.getAttribute('href');
         if (!href) return;
         
         const targetElement = document.querySelector(href);
         if (!targetElement) return;
         
         window.scrollTo({
-          top: targetElement.getBoundingClientRect().top + window.scrollY - 80, // Offset for header
+          top: targetElement.getBoundingClientRect().top + window.scrollY - 80,
           behavior: 'smooth'
         });
       });
@@ -37,7 +37,7 @@ function App() {
   }, []);
   
   return (
-    <div className="min-h-screen bg-[#FFFCF7] text-amber-950 font-sans">
+    <div className="min-h-screen bg-[#FFFCF7] text-teal-900 font-sans">
       <Header />
       <Hero />
       <Features />

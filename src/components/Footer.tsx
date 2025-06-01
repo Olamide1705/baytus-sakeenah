@@ -7,13 +7,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="py-12 bg-teal-900 text-teal-100">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-center items-center">
           <div className="mb-6 md:mb-0">
-            <div className="text-xl font-bold mb-2">Marriage Stories</div>
-            <div className="text-teal-200">Coming Soon, In sha Allah</div>
+            <div className="text-xl font-bold mb-2 text-center">Marriage Stories</div>
+            <div className="text-teal-200 text-center">Coming Soon, In sha Allah</div>
           </div>
           
-          <div className="flex space-x-6">
+          <div className="hidden space-x-6">
             <a 
               href="#" 
               className="text-teal-100 hover:text-white transition-colors"

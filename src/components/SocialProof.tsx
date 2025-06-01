@@ -5,7 +5,7 @@ const SocialProof: React.FC = () => {
     <section id="about" className="py-16 bg-white/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-md p-8 md:p-10 text-center">
+          <div className="bg-white rounded-lg shadow-md p-4 py-8 sm:p-8 md:p-10 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-emerald-950 mb-6">Why We're Building This</h2>
             
             <p className="text-emerald-800 text-lg mb-8 leading-relaxed">

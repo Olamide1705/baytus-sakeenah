@@ -124,7 +124,7 @@ const WaitlistForm: React.FC = () => {
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
-                    className={`form-input ${errors.role ? 'border-red-500' : 'border-teal-200'}`}
+                    className={`form-input text-teal-900 ${errors.role ? 'border-red-500' : 'border-teal-200'}`}
                   >
                     <option value="">Select your role</option>
                     <option value="mentor">Community Elder/Scholar</option>
