@@ -47,7 +47,7 @@ const Header: React.FC = () => {
           </nav>
           
           <button 
-            className="md:hidden text-amber-900"
+            className="md:hidden text-teal-900"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -58,12 +58,12 @@ const Header: React.FC = () => {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#F5F0E5] absolute top-full left-0 w-full p-4 shadow-md">
+        <div className="md:hidden bg-teal-50 absolute top-full left-0 w-full p-4 shadow-md">
           <ul className="flex flex-col space-y-4">
             <li>
               <a 
                 href="#features" 
-                className="block text-amber-900 hover:text-amber-700 transition-colors"
+                className="block text-teal-900 hover:text-teal-700 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
             <li>
               <a 
                 href="#waitlist" 
-                className="block text-amber-900 hover:text-amber-700 transition-colors"
+                className="block text-teal-900 hover:text-teal-700 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Join Waitlist
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
             <li>
               <a 
                 href="#about" 
-                className="block text-amber-900 hover:text-amber-700 transition-colors"
+                className="block text-teal-900 hover:text-teal-700 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us

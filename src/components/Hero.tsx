@@ -1,6 +1,6 @@
 import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { Fuel as Mosque, Star, Users, Heart } from 'lucide-react';
+import { Fuel as Mosque, Star, Heart } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -24,8 +24,8 @@ const Hero: React.FC = () => {
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="block mb-2 gradient-text">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-normal">
+              <span className="block mb-2 pb-2 gradient-text">
                 Building Blessed Marriages
               </span>
               <span className="block text-2xl md:text-3xl lg:text-4xl font-medium text-emerald-800/90 mt-4">
@@ -55,18 +55,18 @@ const Hero: React.FC = () => {
               </a>
             </div>
             
-            <div className="grid grid-cols-3 gap-8 text-center">
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+            <div className="grid grid-cols-3 gap-8 text-center mx-auto pb-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2.5 sm:p-4 shadow-lg">
                 <span className="block text-2xl font-bold gradient-text">247+</span>
-                <span className="text-sm text-emerald-800">Community Members</span>
+                <span className="text-xs sm:text-sm text-emerald-800">Community Members</span>
               </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2.5 sm:p-4 shadow-lg">
                 <span className="block text-2xl font-bold gradient-text">73%</span>
-                <span className="text-sm text-emerald-800">Young Couples</span>
+                <span className="text-xs sm:text-sm text-emerald-800">Young Couples</span>
               </div>
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-2.5 sm:p-4 shadow-lg">
                 <span className="block text-2xl font-bold gradient-text">27%</span>
-                <span className="text-sm text-emerald-800">Scholars & Elders</span>
+                <span className="text-xs sm:text-sm text-emerald-800">Scholars & Elders</span>
               </div>
             </div>
           </div>
