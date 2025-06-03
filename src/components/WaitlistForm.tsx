@@ -31,7 +31,6 @@ const WaitlistForm: React.FC = () => {
   
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -59,9 +58,16 @@ const WaitlistForm: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl shadow-teal-900/10 p-8 md:p-12">
+          {
+            isSubmitted ?
+
+            <h2 className="text-3xl font-bold gradient-text mb-8 text-center">
+              Alhamdulilah! You're now in.
+            </h2>:
             <h2 className="text-3xl font-bold gradient-text mb-8 text-center">
               Join Our Community
             </h2>
+          }
             
             {isSubmitted ? (
               <div className="text-center py-12">
@@ -92,7 +98,7 @@ const WaitlistForm: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className={`form-input ${errors.name ? 'border-red-500' : 'border-teal-200'}`}
-                    placeholder="Abdullah"
+                    placeholder="Abdullah Muhammad"
                   />
                   {errors.name && (
                     <p className="mt-1 text-red-600 text-sm">{errors.name}</p>
@@ -129,9 +135,13 @@ const WaitlistForm: React.FC = () => {
                     className={`form-input text-teal-900 ${errors.role ? 'border-red-500' : 'border-teal-200'}`}
                   >
                     <option value="">Select your role</option>
-                    <option value="mentor">Community Elder/Scholar</option>
-                    <option value="couple">Married Couple</option>
-                    <option value="single">Preparing for Marriage</option>
+                    <option value="Community Elder/Alim">Community Elder/Alim</option>
+                    <option value="Married Couple (3+ years)">Married Couple (3+ years)</option>
+                    <option value="Newly Married (0-3 years)">Newly Married (0-3 years)</option>
+                    <option value="Seeking Marriage">Seeking Marriage</option>
+                    <option value="Parent/Wali">Parent/Wali</option>
+                    <option value="New Muslim Guidance">New Muslim Guidance</option>
+                    <option value="Certified Marriage Coach">Certified Marriage Coach</option>
                   </select>
                   {errors.role && (
                     <p className="mt-1 text-red-600 text-sm">{errors.role}</p>

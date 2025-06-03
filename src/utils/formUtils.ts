@@ -25,7 +25,11 @@ export const validateForm = (formData: FormData): Record<string, string> => {
   }
 
   if (!formData.gender) {
-    errors.role = 'Please select your gender';
+    errors.gender = 'Please select your gender';
+  }
+
+  if (!formData.location) {
+    errors.location = 'Please enter your location';
   }
 
   return errors;
