@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormData, Role } from '../types';
+import { FormData, Gender, Role } from '../types';
 import { validateForm, handleFormSubmit } from '../utils/formUtils';
 
 const WaitlistForm: React.FC = () => {
@@ -7,7 +7,9 @@ const WaitlistForm: React.FC = () => {
     name: '',
     email: '',
     role: '' as Role,
-    interest: '',
+    concerns: '',
+    gender: '' as Gender,
+    location: '',
   });
   
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -42,7 +44,7 @@ const WaitlistForm: React.FC = () => {
       const success = await handleFormSubmit(formData);
       if (success) {
         setIsSubmitted(true);
-        setFormData({ name: '', email: '', role: '' as Role, interest: '' });
+        setFormData({ name: '', email: '', role: '' as Role, concerns: '', location: '', gender: '' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -135,15 +137,53 @@ const WaitlistForm: React.FC = () => {
                     <p className="mt-1 text-red-600 text-sm">{errors.role}</p>
                   )}
                 </div>
+                <div>
+                  <label htmlFor="gender" className="block text-teal-900 font-medium mb-2">
+                    Your Gender
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    className={`form-input text-teal-900 ${errors.gender ? 'border-red-500' : 'border-teal-200'}`}
+                  >
+                    <option value="">Select your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Prefer not to say</option>
+                  </select>
+                  {errors.gender && (
+                    <p className="mt-1 text-red-600 text-sm">{errors.gender}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="location" className="block text-teal-900 font-medium mb-2">
+                    Your Location
+                  </label>
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    className={`form-input ${errors.location ? 'border-red-500' : 'border-teal-200'}`}
+                    placeholder="FCT, Abuja"
+                  />
+                  {errors.location && (
+                    <p className="mt-1 text-red-600 text-sm">{errors.location}</p>
+                  )}
+                </div>
                 
                 <div>
-                  <label htmlFor="interest" className="block text-teal-900 font-medium mb-2">
+                  <label htmlFor="concerns" className="block text-teal-900 font-medium mb-2">
                     What aspects of Islamic marriage would you like to learn more about? (Optional)
                   </label>
                   <textarea
-                    id="interest"
-                    name="interest"
-                    value={formData.interest}
+                    id="concerns"
+                    name="concerns"
+                    value={formData.concerns}
                     onChange={handleChange}
                     rows={4}
                     className="form-input resize-none"
