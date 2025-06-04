@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FormData, Gender, Role } from '../types';
-import { validateForm, handleFormSubmit } from '../utils/formUtils';
+import { validateForm } from '../utils/formUtils';
+import axios from 'axios';
+import { baseUrl } from '../utils/env';
 
 const WaitlistForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -32,6 +34,7 @@ const WaitlistForm: React.FC = () => {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validateForm(formData);
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -40,14 +43,33 @@ const WaitlistForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      const success = await handleFormSubmit(formData);
+      const response = await axios.post(`${baseUrl}/api/v1/waitlist/`, formData);
+      const success = response.status >= 200 && response.status < 300;
       if (success) {
         setIsSubmitted(true);
         setFormData({ name: '', email: '', role: '' as Role, concerns: '', location: '', gender: '' });
       }
+      return response;
     } catch (error) {
+      
       console.error('Form submission error:', error);
       setErrors({ submit: 'Something went wrong. Please try again.' });
+      if (axios.isAxiosError(error)) {
+      console.error('Error submitting form:', error.message);
+      setErrors({ submit: error.message });
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+        setErrors({ submit: error.response.data?.detail });
+        return error.response.data;
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+      } else {
+        console.error('Error setting up request:', error.message);
+      }
+    } else {
+      console.error('An unexpected error occurred:', error);
+      setErrors({ submit: 'Something went wrong. Please try again.' });
+    }
     } finally {
       setIsSubmitting(false);
     }
