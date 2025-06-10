@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-center items-center">
           <div className="mb-6 md:mb-0">
-            <div className="text-xl font-bold mb-2 text-center">Marriage Stories</div>
+            <div className="text-xl font-bold mb-2 text-center">BaitulSakinah</div>
             <div className="text-teal-200 text-center">Coming Soon, In sha Allah</div>
           </div>
           
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-teal-800/50 text-center text-teal-300 text-sm">
-          <p>© {currentYear} Marriage Stories. All rights reserved.</p>
+          <p>© {currentYear} BaitulSakinah. All rights reserved.</p>
         </div>
       </div>
     </footer>

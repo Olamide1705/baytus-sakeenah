@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 function App() {
   useEffect(() => {
     // Update page title
-    document.title = 'Marriage Stories - Join the Waitlist';
+    document.title = 'BaitulSakinah - Join the Waitlist';
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

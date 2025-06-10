@@ -23,7 +23,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <span className="text-xl font-bold text-emerald-900">Marriage Stories</span>
+            <span className="text-xl font-bold text-emerald-900">Baitul Sakinah</span>
           </div>
           
           <nav className="hidden md:block">
