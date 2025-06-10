@@ -1,2 +1,4 @@
 
-export const baseUrl = 'https://0181-102-89-83-74.ngrok-free.app'
+export const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+// https://4f02-102-90-48-104.ngrok-free.app
