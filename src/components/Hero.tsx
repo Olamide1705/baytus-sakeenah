@@ -1,16 +1,16 @@
 import React from 'react';
-import { Player } from '@lottiefiles/react-lottie-player';
 import { Fuel as Mosque, Star, Heart } from 'lucide-react';
+import stoneTower from '../assets/rings.jpg';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen pt-20 flex items-center islamic-pattern overflow-hidden">
+    <section className="relative min-h-screen pt-20 pb-20 flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-50/90 to-slate-50 z-10"></div>
+        <div className="absolute z-10"></div>
         <img 
-          src="https://images.pexels.com/photos/7061662/pexels-photo-7061662.jpeg?auto=compress&cs=tinysrgb&w=1600" 
-          alt="Islamic architectural details" 
-          className="w-full h-full object-cover opacity-20"
+          src={stoneTower} 
+          alt="" 
+          className="w-full h-full object-cover bg-opacity-20"
         />
       </div>
       
@@ -73,12 +73,7 @@ const Hero: React.FC = () => {
           
           <div className="hidden md:block relative">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full filter blur-3xl"></div>
-            <Player
-              autoplay
-              loop
-              src="https://assets2.lottiefiles.com/packages/lf20_bhebjzpu.json"
-              className="w-full max-w-lg mx-auto"
-            />
+            
           </div>
         </div>
       </div>
