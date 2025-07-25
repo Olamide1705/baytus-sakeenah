@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fuel as Mosque, Star, Heart } from 'lucide-react';
-import stoneTower from '../assets/rings.jpg';
+import stoneTower from '../assets/rings_LE_upscale_balanced_x4.jpg';
 
 const Hero: React.FC = () => {
   return (
