@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fuel as Mosque, Star, Heart } from 'lucide-react';
-import stoneTower from '../assets/rings_LE_upscale_balanced_x4.jpg';
+import rings from '../assets/rings_LE_upscale_balanced_x4.jpg';
 
 const Hero: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0">
         <div className="absolute z-10"></div>
         <img 
-          src={stoneTower} 
+          src={rings} 
           alt="" 
           className="w-full h-full object-cover bg-opacity-20"
         />

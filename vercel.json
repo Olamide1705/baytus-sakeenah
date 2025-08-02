@@ -1,0 +1,14 @@
+{
+    "rewrites": [
+        {
+            "source": "/",
+            "destination": "/volunteer",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "join.baytussakeenah.com.ng"
+                }
+            ]
+        }
+    ]
+}
