@@ -1,6 +1,6 @@
-import React from 'react'
+
 import rings from '../assets/rings_LE_upscale_balanced_x4.jpg';
-import { Fuel as Mosque, Star, Heart } from 'lucide-react';
+import { Fuel as Mosque, Star} from 'lucide-react';
 import Volunteer from '../components/Volunteer';
 
 const VolunteerHeader = () => {
