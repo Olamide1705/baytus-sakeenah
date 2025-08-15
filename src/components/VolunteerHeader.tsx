@@ -6,7 +6,7 @@ import Volunteer from '../components/Volunteer';
 const VolunteerHeader = () => {
   return (
     <div className='scroll-smooth'>
-   <div className="flex flex-col justify-center items-center min-h-screen">
+   <div className="flex flex-col justify-center items-center min-h-screen pb-20">
       <div className="relative min-h-screen pt-20 pb-20 flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute z-10"></div>

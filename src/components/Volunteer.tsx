@@ -5,9 +5,9 @@ const Volunteer = () => {
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScURnntqcXNYs1MsH3wPqFJFK1nR2KALsVsL5VzBCH_goCOWw/viewform?embedded=true"
         width="100%"
-        height={800}
-        style={{ border: "none", maxWidth: "600px,", overflow: "hidden" }}
-        scrolling="no"
+        height={1000}
+        style={{ border: "none", maxWidth: "100%", minHeight: "100vh" }}
+        scrolling="yes"
         allowFullScreen
         title="Volunteer Form"
       ></iframe>
