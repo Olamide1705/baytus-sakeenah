@@ -4,19 +4,21 @@
 
 @layer base {
   body {
+    margin: 0;
+    padding: 0;
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    font-family: 'Noto Sans Arabic', sans-serif;
+    font-family: "Noto Sans Arabic", sans-serif;
   }
 }
 
-.hero-pattern {
+/* .hero-pattern {
   background-color: #f8fafc;
   position: relative;
   overflow: hidden;
 }
 
 .hero-pattern::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -24,7 +26,7 @@
   bottom: 0;
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23047857' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   z-index: 0;
-}
+} */
 
 .gradient-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-800 to-green-600;
@@ -43,7 +45,7 @@
 }
 
 .islamic-pattern::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -59,13 +61,17 @@
 }
 
 .feature-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(6, 95, 70, 0.05) 0%, rgba(20, 184, 166, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(6, 95, 70, 0.05) 0%,
+    rgba(20, 184, 166, 0.05) 100%
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -79,7 +85,7 @@
 }
 
 .dome-shape::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -94,7 +100,7 @@
 }
 
 .islamic-border::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(45deg, #047857, #059669, #047857);
