@@ -1,5 +1,5 @@
 
-const Volunteer = () => {
+const VolunteerGoogle = () => {
   return (
     <section id="volunteer">
       <iframe
@@ -9,10 +9,10 @@ const Volunteer = () => {
         style={{ border: "none", maxWidth: "100%", minHeight: "100vh" }}
         scrolling="yes"
         allowFullScreen
-        title="Volunteer Form"
+        title="VolunteerGoogle Form"
       ></iframe>
     </section>
   );
 };
 
-export default Volunteer;
+export default VolunteerGoogle;
