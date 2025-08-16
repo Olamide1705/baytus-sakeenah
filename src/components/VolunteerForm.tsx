@@ -316,7 +316,7 @@ const VolunteerForm: React.FC = () => {
   };
 
   // Utility class for common input styles
-  const inputClassName = `form-input flex w-full px-4 mt-1 mb-2 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500 h-[50px] !py-1`;
+  const inputClassName = `form-input flex w-full px-4 mt-1 mb-8 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500 h-[50px] !py-1`;
 
   return (
     <section id="volunteer">
