@@ -936,7 +936,7 @@ const VolunteerForm: React.FC = () => {
                       className="block text-teal-900 font-medium mb-2"
                     >
                       What is your primary motivation for joining with
-                      Baytul-Sakinah? <span className="text-red-500">*</span>
+                      Baytus-Sakeenah? <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       id="motivation"
@@ -961,7 +961,7 @@ const VolunteerForm: React.FC = () => {
                       htmlFor="islamicValues"
                       className="block text-teal-900 font-medium mb-2"
                     >
-                      Baytul-Sakinah upholds Islamic values (e.g., modesty,
+                      Baytus-Sakeenah upholds Islamic values (e.g., modesty,
                       privacy, no gossip). How do you envision contributing to
                       and upholding these values?
                     </label>
@@ -983,7 +983,7 @@ const VolunteerForm: React.FC = () => {
                     >
                       What do you believe are some of the biggest challenges
                       facing young Muslim couples in Nigeria today, and how do
-                      you think Baytul-Sakinah can help address them?
+                      you think Baytus-Sakeenah can help address them?
                     </label>
                     <textarea
                       id="challenges"
@@ -1001,7 +1001,7 @@ const VolunteerForm: React.FC = () => {
                       htmlFor="howDidYouHear"
                       className="block text-teal-900 font-medium mb-2"
                     >
-                      How did you hear about Baytul-Sakinah?
+                      How did you hear about Baytus-Sakeenah?
                     </label>
                     <select
                       id="howDidYouHear"
