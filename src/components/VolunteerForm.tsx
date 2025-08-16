@@ -316,7 +316,7 @@ const VolunteerForm: React.FC = () => {
   };
 
   // Utility class for common input styles
-  const inputClassName = `form-input flex w-full px-4 mt-1 mb-8 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500 h-[50px] !py-1`;
+  const inputClassName = `form-input flex w-full px-4 mt-1 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500 py-5`;
 
   return (
     <section id="volunteer">
@@ -343,7 +343,7 @@ const VolunteerForm: React.FC = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-10">
               {/* Step 1: Basic Information & Interest */}
               {currentStep === 1 && (
                 <div className="px-4 py-6 bg-gray-50 rounded-lg shadow-sm">
@@ -356,7 +356,7 @@ const VolunteerForm: React.FC = () => {
                   </p>
 
                   {/* Full Name */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="fullName"
                       className="block text-teal-900 font-medium mb-2"
@@ -374,15 +374,16 @@ const VolunteerForm: React.FC = () => {
                       }`}
                       placeholder="e.g. Adam Suleiman"
                     />
+
                     {errors.fullName && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.fullName}
                       </p>
                     )}
                   </div>
 
                   {/* Email Address */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="email"
                       className="block text-teal-900 font-medium mb-2"
@@ -401,14 +402,14 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. your@email.com"
                     />
                     {errors.email && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.email}
                       </p>
                     )}
                   </div>
 
                   {/* Phone Number */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="phone"
                       className="block text-teal-900 font-medium mb-2"
@@ -428,14 +429,14 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. +2348012345678"
                     />
                     {errors.phone && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.phone}
                       </p>
                     )}
                   </div>
 
                   {/* City, State & Country */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="location"
                       className="block text-teal-900 font-medium mb-2"
@@ -455,14 +456,14 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. Lagos, Lagos State"
                     />
                     {errors.location && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.location}
                       </p>
                     )}
                   </div>
 
                   {/* Gender */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="gender"
                       className="block text-teal-900 font-medium mb-2"
@@ -484,14 +485,14 @@ const VolunteerForm: React.FC = () => {
                       <option value="Others">Prefer not to say</option>
                     </select>
                     {errors.gender && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.gender}
                       </p>
                     )}
                   </div>
 
                   {/* Age Group */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="ageGroup"
                       className="block text-teal-900 font-medium mb-2"
@@ -515,7 +516,7 @@ const VolunteerForm: React.FC = () => {
                       <option value="56+">56+</option>
                     </select>
                     {errors.ageGroup && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.ageGroup}
                       </p>
                     )}
@@ -553,7 +554,7 @@ const VolunteerForm: React.FC = () => {
                       ))}
                     </div>
                     {errors.teamInterest && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="text-red-600 text-sm">
                         {errors.teamInterest}
                       </p>
                     )}
@@ -615,7 +616,7 @@ const VolunteerForm: React.FC = () => {
                   </p>
 
                   {/* Years of Experience */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="yearsExperience"
                       className="block text-teal-900 font-medium mb-2"
@@ -639,7 +640,7 @@ const VolunteerForm: React.FC = () => {
                       <option value="5+ years">5+ years</option>
                     </select>
                     {errors.yearsExperience && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.yearsExperience}
                       </p>
                     )}
@@ -648,7 +649,7 @@ const VolunteerForm: React.FC = () => {
                   {/* Conditional Fields based on Primary Interest */}
                   {formData.primaryInterest === "Content Creation" && (
                     <>
-                      <div>
+                      <div className="mb-7">
                         <label
                           htmlFor="contentSkills"
                           className="block text-teal-900 font-medium mb-2"
@@ -667,12 +668,13 @@ const VolunteerForm: React.FC = () => {
                           placeholder="e.g., SEO writing, storytelling, editing, proofreading..."
                         ></textarea>
                         {errors.contentSkills && (
-                          <p className="mb-5 text-red-600 text-sm">
+                          <p className="mt-2 text-red-600 text-sm">
                             {errors.contentSkills}
                           </p>
                         )}
                       </div>
-                      <div>
+
+                      <div className="mb-7">
                         <label
                           htmlFor="writingSamples"
                           className="block text-teal-900 font-medium mb-2"
@@ -693,7 +695,7 @@ const VolunteerForm: React.FC = () => {
                           placeholder="e.g., yourwebsite.com/articles or drive.google.com/..."
                         />
                         {errors.writingSamples && (
-                          <p className="mb-5 text-red-600 text-sm">
+                          <p className="mt-2 text-red-600 text-sm">
                             {errors.writingSamples}
                           </p>
                         )}
@@ -703,7 +705,7 @@ const VolunteerForm: React.FC = () => {
 
                   {formData.primaryInterest === "Design" && (
                     <>
-                      <div>
+                      <div className="mb-5">
                         <label
                           htmlFor="designSoftware"
                           className="block text-teal-900 font-medium mb-2"
@@ -723,12 +725,13 @@ const VolunteerForm: React.FC = () => {
                           placeholder="e.g., Figma, Adobe Photoshop, Illustrator, Canva"
                         />
                         {errors.designSoftware && (
-                          <p className="mb-5 text-red-600 text-sm">
+                          <p className="mt-2 text-red-600 text-sm">
                             {errors.designSoftware}
                           </p>
                         )}
                       </div>
-                      <div>
+
+                      <div className="mb-7">
                         <label
                           htmlFor="designPortfolio"
                           className="block text-teal-900 font-medium mb-2"
@@ -748,7 +751,7 @@ const VolunteerForm: React.FC = () => {
                           placeholder="e.g., behance.net/yourname or yourportfolio.com"
                         />
                         {errors.designPortfolio && (
-                          <p className="mb-5 text-red-600 text-sm">
+                          <p className="mt-2 text-red-600 text-sm">
                             {errors.designPortfolio}
                           </p>
                         )}
@@ -758,7 +761,7 @@ const VolunteerForm: React.FC = () => {
 
                   {formData.primaryInterest === "Tech/Development" && (
                     <>
-                      <div>
+                      <div className="mb-7">
                         <label
                           htmlFor="techLanguages"
                           className="block text-teal-900 font-medium mb-2"
@@ -778,12 +781,13 @@ const VolunteerForm: React.FC = () => {
                           placeholder="e.g., JavaScript, React, Python, Node.js, Firebase"
                         />
                         {errors.techLanguages && (
-                          <p className="mt-1 text-red-600 text-sm">
+                          <p className="mt-2 text-red-600 text-sm">
                             {errors.techLanguages}
                           </p>
                         )}
                       </div>
-                      <div>
+
+                      <div className="mb-7">
                         <label
                           htmlFor="techGithub"
                           className="block text-teal-900 font-medium mb-2"
@@ -803,7 +807,7 @@ const VolunteerForm: React.FC = () => {
                           placeholder="e.g., github.com/yourusername or link to a deployed project"
                         />
                         {errors.techGithub && (
-                          <p className="mb-5 text-red-600 text-sm">
+                          <p className="mt-2 text-red-600 text-sm">
                             {errors.techGithub}
                           </p>
                         )}
@@ -812,7 +816,7 @@ const VolunteerForm: React.FC = () => {
                   )}
 
                   {formData.primaryInterest === "Public Relations" && (
-                    <div>
+                    <div className="mb-7">
                       <label
                         htmlFor="prExperience"
                         className="block text-teal-900 font-medium mb-2"
@@ -832,7 +836,7 @@ const VolunteerForm: React.FC = () => {
                         placeholder="e.g., social media management, partnership building, event coordination..."
                       ></textarea>
                       {errors.prExperience && (
-                        <p className="mb-5 text-red-600 text-sm">
+                        <p className="mt-2 text-red-600 text-sm">
                           {errors.prExperience}
                         </p>
                       )}
@@ -841,7 +845,7 @@ const VolunteerForm: React.FC = () => {
 
                   {formData.primaryInterest ===
                     "Moderation/Community Management" && (
-                    <div>
+                    <div className="mb-7">
                       <label
                         htmlFor="moderationExperience"
                         className="block text-teal-900 font-medium mb-2"
@@ -861,7 +865,7 @@ const VolunteerForm: React.FC = () => {
                         placeholder="e.g., forum moderation, conflict resolution, user support..."
                       ></textarea>
                       {errors.moderationExperience && (
-                        <p className="mb-5 text-red-600 text-sm">
+                        <p className="mt-2 text-red-600 text-sm">
                           {errors.moderationExperience}
                         </p>
                       )}
@@ -869,7 +873,7 @@ const VolunteerForm: React.FC = () => {
                   )}
 
                   {formData.primaryInterest === "Other" && (
-                    <div>
+                    <div className="mb-7">
                       <label
                         htmlFor="otherSkills"
                         className="block text-teal-900 font-medium mb-2"
@@ -888,7 +892,7 @@ const VolunteerForm: React.FC = () => {
                         placeholder="Describe your skills here..."
                       ></textarea>
                       {errors.otherSkills && (
-                        <p className="mb-5 text-red-600 text-sm">
+                        <p className="mt-2 text-red-600 text-sm">
                           {errors.otherSkills}
                         </p>
                       )}
@@ -926,7 +930,7 @@ const VolunteerForm: React.FC = () => {
                   </p>
 
                   {/* Motivation */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="motivation"
                       className="block text-teal-900 font-medium mb-2"
@@ -939,20 +943,20 @@ const VolunteerForm: React.FC = () => {
                       name="motivation"
                       value={formData.motivation}
                       onChange={handleChange}
-                      className={`w-full mb-3 form-input px-5 py-3 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500 ${
+                      className={`${inputClassName} ${
                         errors.motivation ? "border-red-500" : ""
                       }`}
                       placeholder="Tell us what resonates with you about our mission to reduce divorce rates and foster stronger Muslim marriages."
                     ></textarea>
                     {errors.motivation && (
-                      <p className="mb-5 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.motivation}
                       </p>
                     )}
                   </div>
 
                   {/* Islamic Values Alignment */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="islamicValues"
                       className="block text-teal-900 font-medium mb-2"
@@ -966,13 +970,13 @@ const VolunteerForm: React.FC = () => {
                       name="islamicValues"
                       value={formData.islamicValues || ""} // Assuming you'd add this to FormData interface
                       onChange={handleChange}
-                      className={`w-full mb-3 form-input px-5 py-3 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500`}
+                      className={`${inputClassName}`}
                       placeholder="Share your thoughts here..."
                     ></textarea>
                   </div>
 
                   {/* Challenges for Young Muslim Couples */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="challenges"
                       className="block text-teal-900 font-medium mb-2"
@@ -986,13 +990,13 @@ const VolunteerForm: React.FC = () => {
                       name="challenges"
                       value={formData.challenges || ""} // Assuming you'd add this to FormData interface
                       onChange={handleChange}
-                      className={`w-full mb-3 form-input px-5 py-3 rounded-lg text-teal-900 border border-teal-200 focus:ring-teal-500 focus:border-teal-500`}
+                      className={`${inputClassName}`}
                       placeholder="Your insights are valuable..."
                     ></textarea>
                   </div>
 
                   {/* How did you hear about us? */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="howDidYouHear"
                       className="block text-teal-900 font-medium mb-2"
