@@ -321,7 +321,7 @@ const VolunteerForm: React.FC = () => {
   return (
     <section id="volunteer">
       <div className="min-h-screen flex items-center justify-center p-4 mb-8">
-        <div className="max-w-3xl w-full bg-white shadow-xl rounded-2xl pt-6 px-4 md:p-8 space-y-8">
+        <div className="max-w-3xl w-full bg-white shadow-xl rounded-2xl py-6 px-4 md:p-8 space-y-8">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-emerald-800/90 mb-8">
             Join Our Team
           </h2>
@@ -346,7 +346,7 @@ const VolunteerForm: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Step 1: Basic Information & Interest */}
               {currentStep === 1 && (
-                <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
+                <div className="px-4 py-6 bg-gray-50 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold text-teal-800 mb-6 text-center">
                     Step 1: Your Details & Interest
                   </h2>
@@ -605,7 +605,7 @@ const VolunteerForm: React.FC = () => {
 
               {/* Step 2: Skills & Experience */}
               {currentStep === 2 && (
-                <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
+                <div className="px-4 py-6 bg-gray-50 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold text-teal-800 mb-6 text-center">
                     Step 2: Your Skills & Experience
                   </h2>
@@ -916,7 +916,7 @@ const VolunteerForm: React.FC = () => {
 
               {/* Step 3: Understanding & Alignment */}
               {currentStep === 3 && (
-                <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
+                <div className="px-4 py-6 bg-gray-50 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold text-teal-800 mb-6 text-center">
                     Step 3: Understanding & Alignment
                   </h2>
