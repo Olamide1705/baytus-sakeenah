@@ -1,7 +1,6 @@
-
 const VolunteerGoogle = () => {
   return (
-    <section id="volunteer">
+    <section>
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLScURnntqcXNYs1MsH3wPqFJFK1nR2KALsVsL5VzBCH_goCOWw/viewform?embedded=true"
         width="100%"
