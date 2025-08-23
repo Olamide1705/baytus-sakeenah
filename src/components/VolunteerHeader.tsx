@@ -7,7 +7,7 @@ const VolunteerHeader = () => {
       className="relative min-h-screen pt-20 mb-10 pb-10 flex items-center overflow-hidden bg-cover bg-right-bottom bg-white/50 lg:bg-transparent bg-blend-overlay"
       style={{ backgroundImage: `url(${rings})` }}
     >
-      <div className="container mx-auto px-4 md:px-6 relative z-20">
+      <div className="container mx-auto px-4 md:px-20 relative z-20">
         <div className="grid md:grid-cols-3 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left col-span-2 lg:col-span-1">
             <div className="inline-block mb-6 animate-float">
