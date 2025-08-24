@@ -1,11 +1,11 @@
-import VolunteerGoogle from "./components/VolunteerGoogle";
 import VolunteerHeader from "./components/VolunteerHeader";
+import VolunteerForm from "./components/VolunteerForm";
 
 function App() {
   return (
     <div className="scroll-smooth">
       <VolunteerHeader />
-      <VolunteerGoogle />
+      <VolunteerForm />
     </div>
   );
 }
