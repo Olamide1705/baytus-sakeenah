@@ -141,6 +141,10 @@ const VolunteerForm: React.FC = () => {
         currentErrors.location = "City & State is required.";
         isValid = false;
       }
+      if (!formData.country.trim()) {
+        currentErrors.country = "Country of Residence is required.";
+        isValid = false;
+      }
       if (!formData.gender) {
         currentErrors.gender = "Gender is required.";
         isValid = false;
@@ -254,32 +258,40 @@ const VolunteerForm: React.FC = () => {
         const GOOGLE_APPS_SCRIPT_WEB_APP_URL =
           "https://script.google.com/macros/s/AKfycby7yNxUs4z34Vd3_Szl98Bu4MScIh7PxeMbf3_KN0JBYcFC9YGO7RRE_rKvDDt10iXK/exec";
 
+        const createSearchParams = (
+          data: VolunteerFormData
+        ): URLSearchParams => {
+          const params = new URLSearchParams();
+
+          // Iterate over all keys in the data object
+          for (const key in data) {
+            if (Object.prototype.hasOwnProperty.call(data, key)) {
+              const value = data[key as keyof VolunteerFormData];
+              if (Array.isArray(value)) {
+                // Handle array values by joining them with a separator
+                params.append(key, value.join(", "));
+              } else if (value !== undefined) {
+                // Append other values, converting booleans to string
+                params.append(key, String(value));
+              }
+            }
+          }
+          return params;
+        };
+
+        // Example usage in your fetch request
+        const params = createSearchParams(formData);
+
         const response = await fetch(GOOGLE_APPS_SCRIPT_WEB_APP_URL, {
           method: "POST",
-          mode: "cors",
+          mode: "no-cors",
           headers: {
-            "Content-Type": "application/json", // Send as JSON
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify(formData), // Convert formData object to JSON string
+          body: params.toString(),
         });
 
-        if (!response.ok) {
-          // Attempt to parse error message from server if available
-          const errorData = await response.json();
-          throw new Error(
-            errorData.message || "Form submission failed on the server."
-          );
-        }
-
-        const result = await response.json(); // Get the JSON response from Apps Script
-        if (result.status === "ERROR") {
-          throw new Error(
-            result.message || "Form submission failed with an unknown error."
-          );
-        }
-
-        console.log("Form data submitted:", formData);
-        console.log("Server response:", result);
+        console.log("clg response", response);
 
         setSubmissionSuccess(true); // Indicate success
         setFormData({
@@ -301,9 +313,9 @@ const VolunteerForm: React.FC = () => {
           howDidYouHear: "",
         });
         setCurrentStep(1); // Go back to first step after success
-      } catch (error) {
-        // Use 'any' for error type if not specific
-        console.error("Submission error:", error);
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+      } catch (error: any) {
         // Display a general error message to the user
         setErrors({
           general:
@@ -339,14 +351,14 @@ const VolunteerForm: React.FC = () => {
                 onClick={() => setSubmissionSuccess(false)}
                 className="mt-6 bg-teal-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-teal-700 transition-colors"
               >
-                Apply Again
+                Wa iyyakum
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-10">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Step 1: Basic Information & Interest */}
               {currentStep === 1 && (
-                <div className="px-4 py-6 bg-gray-50 rounded-lg shadow-sm">
+                <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold text-teal-800 mb-6 text-center">
                     Step 1: Your Details & Interest
                   </h2>
@@ -356,7 +368,7 @@ const VolunteerForm: React.FC = () => {
                   </p>
 
                   {/* Full Name */}
-                  <div className="mb-7">
+                  <div>
                     <label
                       htmlFor="fullName"
                       className="block text-teal-900 font-medium mb-2"
@@ -374,16 +386,15 @@ const VolunteerForm: React.FC = () => {
                       }`}
                       placeholder="e.g. Adam Suleiman"
                     />
-
                     {errors.fullName && (
-                      <p className="mt-2 text-red-600 text-sm">
+                      <p className="mt-1 text-red-600 text-sm">
                         {errors.fullName}
                       </p>
                     )}
                   </div>
 
                   {/* Email Address */}
-                  <div className="mb-7">
+                  <div>
                     <label
                       htmlFor="email"
                       className="block text-teal-900 font-medium mb-2"
@@ -402,14 +413,14 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. your@email.com"
                     />
                     {errors.email && (
-                      <p className="mt-2 text-red-600 text-sm">
+                      <p className="mt-1 text-red-600 text-sm">
                         {errors.email}
                       </p>
                     )}
                   </div>
 
                   {/* Phone Number */}
-                  <div className="mb-7">
+                  <div>
                     <label
                       htmlFor="phone"
                       className="block text-teal-900 font-medium mb-2"
@@ -429,178 +440,184 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. +2348012345678"
                     />
                     {errors.phone && (
-                      <p className="mt-2 text-red-600 text-sm">
+                      <p className="mt-1 text-red-600 text-sm">
                         {errors.phone}
                       </p>
                     )}
                   </div>
 
                   {/* City, State & Country */}
-                  <div className="mb-7">
-                    <label
-                      htmlFor="location"
-                      className="block text-teal-900 font-medium mb-2"
-                    >
-                      Current City & State{" "}
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="location"
-                      name="location"
-                      value={formData.location}
-                      onChange={handleChange}
-                      className={`${inputClassName} ${
-                        errors.location ? "border-red-500" : ""
-                      }`}
-                      placeholder="e.g. Lagos, Lagos State"
-                    />
-                    {errors.location && (
-                      <p className="mt-2 text-red-600 text-sm">
-                        {errors.location}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Gender */}
-                  <div className="mb-7">
-                    <label
-                      htmlFor="gender"
-                      className="block text-teal-900 font-medium mb-2"
-                    >
-                      Your Gender <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      id="gender"
-                      name="gender"
-                      value={formData.gender}
-                      onChange={handleChange}
-                      className={`${inputClassName} ${
-                        errors.gender ? "border-red-500" : ""
-                      }`}
-                    >
-                      <option value="">Select your gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Others">Prefer not to say</option>
-                    </select>
-                    {errors.gender && (
-                      <p className="mt-2 text-red-600 text-sm">
-                        {errors.gender}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Age Group */}
-                  <div className="mb-7">
-                    <label
-                      htmlFor="ageGroup"
-                      className="block text-teal-900 font-medium mb-2"
-                    >
-                      Age Group <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      id="ageGroup"
-                      name="ageGroup"
-                      value={formData.ageGroup}
-                      onChange={handleChange}
-                      className={`${inputClassName} ${
-                        errors.ageGroup ? "border-red-500" : ""
-                      }`}
-                    >
-                      <option value="">Select your age group</option>
-                      <option value="18-24">18-24</option>
-                      <option value="25-35">25-35</option>
-                      <option value="36-45">36-45</option>
-                      <option value="46-55">46-55</option>
-                      <option value="56+">56+</option>
-                    </select>
-                    {errors.ageGroup && (
-                      <p className="mt-2 text-red-600 text-sm">
-                        {errors.ageGroup}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Team Interest - Checkboxes */}
-                  <div>
-                    <label className="block text-teal-900 font-medium mb-2">
-                      Which Team(s) are you interested in joining?{" "}
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <div className="flex flex-col space-y-2">
-                      {[
-                        "Content Creation",
-                        "Design",
-                        "Public Relations",
-                        "Tech/Development",
-                        "Marketing/Growth",
-                        "Moderation/Community Management",
-                        "Mentorship Program Support",
-                        "Research & Data Analysis",
-                        "Other",
-                      ].map((team) => (
-                        <label key={team} className="inline-flex items-center">
-                          <input
-                            type="checkbox"
-                            name="teamInterest"
-                            value={team}
-                            checked={formData.teamInterest.includes(team)}
-                            onChange={handleChange}
-                            className="form-checkbox text-teal-600 rounded-md"
-                          />
-                          <span className="ml-2 text-teal-900">{team}</span>
-                        </label>
-                      ))}
-                    </div>
-                    {errors.teamInterest && (
-                      <p className="text-red-600 text-sm">
-                        {errors.teamInterest}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Primary Interest - Dropdown (for conditional logic) */}
-                  {formData.teamInterest.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label
-                        htmlFor="primaryInterest"
-                        className="block text-teal-900 font-medium mt-4 mb-2"
+                        htmlFor="location"
+                        className="block text-teal-900 font-medium mb-2"
                       >
-                        From your selections above, which team is your *primary*
-                        interest? <span className="text-red-500">*</span>
+                        Current City & State{" "}
+                        <span className="text-red-500">*</span>
                       </label>
-                      <select
-                        id="primaryInterest"
-                        name="primaryInterest"
-                        value={formData.primaryInterest}
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value={formData.location}
                         onChange={handleChange}
                         className={`${inputClassName} ${
-                          errors.primaryInterest ? "border-red-500" : ""
+                          errors.location ? "border-red-500" : ""
                         }`}
-                      >
-                        <option value="">Select your top choice</option>
-                        {formData.teamInterest.map((team) => (
-                          <option key={team} value={team}>
-                            {team}
-                          </option>
-                        ))}
-                      </select>
-                      {errors.primaryInterest && (
-                        <p className="mb-5 text-red-600 text-sm">
-                          {errors.primaryInterest}
+                        placeholder="e.g. Lagos, Lagos State"
+                      />
+                      {errors.location && (
+                        <p className="mt-2 text-red-600 text-sm">
+                          {errors.location}
                         </p>
                       )}
                     </div>
-                  )}
 
-                  <button
-                    type="button"
-                    onClick={nextStep}
-                    className="button-primary inline-flex items-center justify-center gap-2 mt-6 w-full"
-                  >
-                    Next
-                  </button>
+                    {/* Gender */}
+                    <div className="mb-7">
+                      <label
+                        htmlFor="gender"
+                        className="block text-teal-900 font-medium mb-2"
+                      >
+                        Your Gender <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="gender"
+                        name="gender"
+                        value={formData.gender}
+                        onChange={handleChange}
+                        className={`${inputClassName} ${
+                          errors.gender ? "border-red-500" : ""
+                        }`}
+                      >
+                        <option value="">Select your gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Prefer not to say</option>
+                      </select>
+                      {errors.gender && (
+                        <p className="mt-2 text-red-600 text-sm">
+                          {errors.gender}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Age Group */}
+                    <div className="mb-7">
+                      <label
+                        htmlFor="ageGroup"
+                        className="block text-teal-900 font-medium mb-2"
+                      >
+                        Age Group <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="ageGroup"
+                        name="ageGroup"
+                        value={formData.ageGroup}
+                        onChange={handleChange}
+                        className={`${inputClassName} ${
+                          errors.ageGroup ? "border-red-500" : ""
+                        }`}
+                      >
+                        <option value="">Select your age group</option>
+                        <option value="18-24">18-24</option>
+                        <option value="25-35">25-35</option>
+                        <option value="36-45">36-45</option>
+                        <option value="46-55">46-55</option>
+                        <option value="56+">56+</option>
+                      </select>
+                      {errors.ageGroup && (
+                        <p className="mt-2 text-red-600 text-sm">
+                          {errors.ageGroup}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Team Interest - Checkboxes */}
+                    <div>
+                      <label className="block text-teal-900 font-medium mb-2">
+                        Which Team(s) are you interested in joining?{" "}
+                        <span className="text-red-500">*</span>
+                      </label>
+                      <div className="flex flex-col space-y-2">
+                        {[
+                          "Content Creation",
+                          "Design",
+                          "Public Relations",
+                          "Tech/Development",
+                          "Marketing/Growth",
+                          "Moderation/Community Management",
+                          "Mentorship Program Support",
+                          "Research & Data Analysis",
+                          "Other",
+                        ].map((team) => (
+                          <label
+                            key={team}
+                            className="inline-flex items-center"
+                          >
+                            <input
+                              type="checkbox"
+                              name="teamInterest"
+                              value={team}
+                              checked={formData.teamInterest.includes(team)}
+                              onChange={handleChange}
+                              className="form-checkbox text-teal-600 rounded-md"
+                            />
+                            <span className="ml-2 text-teal-900">{team}</span>
+                          </label>
+                        ))}
+                      </div>
+                      {errors.teamInterest && (
+                        <p className="text-red-600 text-sm">
+                          {errors.teamInterest}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Primary Interest - Dropdown (for conditional logic) */}
+                    {formData.teamInterest.length > 0 && (
+                      <div>
+                        <label
+                          htmlFor="primaryInterest"
+                          className="block text-teal-900 font-medium mt-4 mb-2"
+                        >
+                          From your selections above, which team is your
+                          *primary* interest?{" "}
+                          <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                          id="primaryInterest"
+                          name="primaryInterest"
+                          value={formData.primaryInterest}
+                          onChange={handleChange}
+                          className={`${inputClassName} ${
+                            errors.primaryInterest ? "border-red-500" : ""
+                          }`}
+                        >
+                          <option value="">Select your top choice</option>
+                          {formData.teamInterest.map((team) => (
+                            <option key={team} value={team}>
+                              {team}
+                            </option>
+                          ))}
+                        </select>
+                        {errors.primaryInterest && (
+                          <p className="mb-5 text-red-600 text-sm">
+                            {errors.primaryInterest}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={nextStep}
+                      className="button-primary inline-flex items-center justify-center gap-2 mt-6 w-full"
+                    >
+                      Next
+                    </button>
+                  </div>
                 </div>
               )}
 

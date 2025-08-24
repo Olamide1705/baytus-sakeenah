@@ -25,11 +25,12 @@ const VolunteerHeader = () => {
                 Guided by Quran and Sunnah
               </span>
             </h1>
-
-            <p className="text-lg md:text-xl text-emerald-900/80 mb-8 leading-relaxed font-medium">
-              Join our community where experienced Muslim couples share wisdom
-              to help build marriages that reflect the beauty of Islamic
-              teachings.
+            <p className="text-center md:text-left text-lg md:text-xl text-emerald-900/80 mb-8 leading-relaxed md:max-w-[70%]">
+              We are building a community-driven platform to strengthen Muslim
+              marriages, guided by faith and built on shared wisdom. Your
+              contribution can make a profound difference in fostering
+              tranquility (sakeenah), love (mawaddah), and mercy (rahmah) in
+              homes across Nigeria and beyond.
             </p>
 
             <div className="flex flex-col md:flex-row gap-4 mb-12">
