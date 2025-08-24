@@ -4,7 +4,7 @@ import rings from "../assets/rings.jpg";
 const VolunteerHeader = () => {
   return (
     <section
-      className="relative min-h-screen pt-20 mb-10 pb-10 flex items-center overflow-hidden bg-cover bg-right-bottom bg-white/50 lg:bg-transparent bg-blend-overlay"
+      className="relative min-h-screen pt-20 mb-10 pb-10 flex items-center overflow-hidden bg-cover bg-right-bottom bg-white/60 lg:bg-transparent bg-blend-overlay"
       style={{ backgroundImage: `url(${rings})` }}
     >
       <div className="container mx-auto px-4 md:px-20 relative z-20">
@@ -25,7 +25,7 @@ const VolunteerHeader = () => {
                 Guided by Quran and Sunnah
               </span>
             </h1>
-            <p className="text-center md:text-left text-lg md:text-xl text-emerald-900/80 mb-8 leading-relaxed md:max-w-[70%]">
+            <p className="text-center md:text-left text-lg md:text-xl font-medium text-emerald-900/80 mb-8 leading-relaxed md:max-w-[70%]">
               We are building a community-driven platform to strengthen Muslim
               marriages, guided by faith and built on shared wisdom. Your
               contribution can make a profound difference in fostering
