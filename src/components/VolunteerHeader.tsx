@@ -4,7 +4,7 @@ import rings from "../assets/rings.jpg";
 const VolunteerHeader = () => {
   return (
     <section
-      className="relative min-h-screen pt-20 mb-10 pb-10 flex items-center overflow-hidden bg-cover bg-right-bottom bg-white/60 lg:bg-transparent bg-blend-overlay"
+      className="relative min-h-screen pt-20 mb-10 pb-10 flex items-center overflow-hidden bg-cover bg-right-bottom bg-white/60 bg-blend-overlay"
       style={{ backgroundImage: `url(${rings})` }}
     >
       <div className="container mx-auto px-4 md:px-20 relative z-20">

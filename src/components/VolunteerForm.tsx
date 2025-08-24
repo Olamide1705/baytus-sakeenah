@@ -356,11 +356,6 @@ const VolunteerForm: React.FC = () => {
 
               <div className="flex items-center justify-center my-6">
                 <div
-                  className={`h-[2px] w-[60px] md:w-[150px] rounded-[30px] mr-2 ${
-                    currentStep >= 1 ? "bg-emerald-800/90" : "bg-[#D3D3D3]"
-                  }`}
-                />
-                <div
                   className={`w-6 h-6 flex items-center mr-2 justify-center rounded-full text-white text-[10px] 
         ${currentStep >= 1 ? "bg-emerald-800/90" : "bg-[#D3D3D3]"}`}
                 >
