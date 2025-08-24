@@ -362,7 +362,7 @@ const VolunteerForm: React.FC = () => {
                   1
                 </div>
                 <div
-                  className={`h-[2px] w-[60px] md:w-[150px] rounded-[30px] mr-2 ${
+                  className={`h-[2px] w-[80px] md:w-[150px] rounded-[30px] mr-2 ${
                     currentStep >= 2 ? "bg-emerald-800/90" : "bg-[#D3D3D3]"
                   }`}
                 />
@@ -374,7 +374,7 @@ const VolunteerForm: React.FC = () => {
                 </div>
 
                 <div
-                  className={`h-[2px] w-[60px] md:w-[150px] rounded-[30px] mr-2 ${
+                  className={`h-[2px] w-[80px] md:w-[150px] rounded-[30px] mr-2 ${
                     currentStep >= 3 ? "bg-emerald-800/90" : "bg-[#D3D3D3]"
                   }`}
                 />
