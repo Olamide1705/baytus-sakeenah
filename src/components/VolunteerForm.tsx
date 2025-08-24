@@ -141,10 +141,6 @@ const VolunteerForm: React.FC = () => {
         currentErrors.location = "City & State is required.";
         isValid = false;
       }
-      if (!formData.country.trim()) {
-        currentErrors.country = "Country of Residence is required.";
-        isValid = false;
-      }
       if (!formData.gender) {
         currentErrors.gender = "Gender is required.";
         isValid = false;
@@ -351,14 +347,14 @@ const VolunteerForm: React.FC = () => {
                 onClick={() => setSubmissionSuccess(false)}
                 className="mt-6 bg-teal-600 text-white font-bold py-2 px-5 rounded-lg hover:bg-teal-700 transition-colors"
               >
-                Wa iyyakum
+                Apply Again
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-10">
               {/* Step 1: Basic Information & Interest */}
               {currentStep === 1 && (
-                <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
+                <div className="px-4 py-6 bg-gray-50 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold text-teal-800 mb-6 text-center">
                     Step 1: Your Details & Interest
                   </h2>
@@ -368,7 +364,7 @@ const VolunteerForm: React.FC = () => {
                   </p>
 
                   {/* Full Name */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="fullName"
                       className="block text-teal-900 font-medium mb-2"
@@ -386,15 +382,16 @@ const VolunteerForm: React.FC = () => {
                       }`}
                       placeholder="e.g. Adam Suleiman"
                     />
+
                     {errors.fullName && (
-                      <p className="mt-1 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.fullName}
                       </p>
                     )}
                   </div>
 
                   {/* Email Address */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="email"
                       className="block text-teal-900 font-medium mb-2"
@@ -413,14 +410,14 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. your@email.com"
                     />
                     {errors.email && (
-                      <p className="mt-1 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.email}
                       </p>
                     )}
                   </div>
 
                   {/* Phone Number */}
-                  <div>
+                  <div className="mb-7">
                     <label
                       htmlFor="phone"
                       className="block text-teal-900 font-medium mb-2"
@@ -440,184 +437,178 @@ const VolunteerForm: React.FC = () => {
                       placeholder="e.g. +2348012345678"
                     />
                     {errors.phone && (
-                      <p className="mt-1 text-red-600 text-sm">
+                      <p className="mt-2 text-red-600 text-sm">
                         {errors.phone}
                       </p>
                     )}
                   </div>
 
                   {/* City, State & Country */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="location"
-                        className="block text-teal-900 font-medium mb-2"
-                      >
-                        Current City & State{" "}
-                        <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        className={`${inputClassName} ${
-                          errors.location ? "border-red-500" : ""
-                        }`}
-                        placeholder="e.g. Lagos, Lagos State"
-                      />
-                      {errors.location && (
-                        <p className="mt-2 text-red-600 text-sm">
-                          {errors.location}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Gender */}
-                    <div className="mb-7">
-                      <label
-                        htmlFor="gender"
-                        className="block text-teal-900 font-medium mb-2"
-                      >
-                        Your Gender <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        id="gender"
-                        name="gender"
-                        value={formData.gender}
-                        onChange={handleChange}
-                        className={`${inputClassName} ${
-                          errors.gender ? "border-red-500" : ""
-                        }`}
-                      >
-                        <option value="">Select your gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Others">Prefer not to say</option>
-                      </select>
-                      {errors.gender && (
-                        <p className="mt-2 text-red-600 text-sm">
-                          {errors.gender}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Age Group */}
-                    <div className="mb-7">
-                      <label
-                        htmlFor="ageGroup"
-                        className="block text-teal-900 font-medium mb-2"
-                      >
-                        Age Group <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        id="ageGroup"
-                        name="ageGroup"
-                        value={formData.ageGroup}
-                        onChange={handleChange}
-                        className={`${inputClassName} ${
-                          errors.ageGroup ? "border-red-500" : ""
-                        }`}
-                      >
-                        <option value="">Select your age group</option>
-                        <option value="18-24">18-24</option>
-                        <option value="25-35">25-35</option>
-                        <option value="36-45">36-45</option>
-                        <option value="46-55">46-55</option>
-                        <option value="56+">56+</option>
-                      </select>
-                      {errors.ageGroup && (
-                        <p className="mt-2 text-red-600 text-sm">
-                          {errors.ageGroup}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Team Interest - Checkboxes */}
-                    <div>
-                      <label className="block text-teal-900 font-medium mb-2">
-                        Which Team(s) are you interested in joining?{" "}
-                        <span className="text-red-500">*</span>
-                      </label>
-                      <div className="flex flex-col space-y-2">
-                        {[
-                          "Content Creation",
-                          "Design",
-                          "Public Relations",
-                          "Tech/Development",
-                          "Marketing/Growth",
-                          "Moderation/Community Management",
-                          "Mentorship Program Support",
-                          "Research & Data Analysis",
-                          "Other",
-                        ].map((team) => (
-                          <label
-                            key={team}
-                            className="inline-flex items-center"
-                          >
-                            <input
-                              type="checkbox"
-                              name="teamInterest"
-                              value={team}
-                              checked={formData.teamInterest.includes(team)}
-                              onChange={handleChange}
-                              className="form-checkbox text-teal-600 rounded-md"
-                            />
-                            <span className="ml-2 text-teal-900">{team}</span>
-                          </label>
-                        ))}
-                      </div>
-                      {errors.teamInterest && (
-                        <p className="text-red-600 text-sm">
-                          {errors.teamInterest}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Primary Interest - Dropdown (for conditional logic) */}
-                    {formData.teamInterest.length > 0 && (
-                      <div>
-                        <label
-                          htmlFor="primaryInterest"
-                          className="block text-teal-900 font-medium mt-4 mb-2"
-                        >
-                          From your selections above, which team is your
-                          *primary* interest?{" "}
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          id="primaryInterest"
-                          name="primaryInterest"
-                          value={formData.primaryInterest}
-                          onChange={handleChange}
-                          className={`${inputClassName} ${
-                            errors.primaryInterest ? "border-red-500" : ""
-                          }`}
-                        >
-                          <option value="">Select your top choice</option>
-                          {formData.teamInterest.map((team) => (
-                            <option key={team} value={team}>
-                              {team}
-                            </option>
-                          ))}
-                        </select>
-                        {errors.primaryInterest && (
-                          <p className="mb-5 text-red-600 text-sm">
-                            {errors.primaryInterest}
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={nextStep}
-                      className="button-primary inline-flex items-center justify-center gap-2 mt-6 w-full"
+                  <div className="mb-7">
+                    <label
+                      htmlFor="location"
+                      className="block text-teal-900 font-medium mb-2"
                     >
-                      Next
-                    </button>
+                      Current City & State{" "}
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      className={`${inputClassName} ${
+                        errors.location ? "border-red-500" : ""
+                      }`}
+                      placeholder="e.g. Lagos, Lagos State"
+                    />
+                    {errors.location && (
+                      <p className="mt-2 text-red-600 text-sm">
+                        {errors.location}
+                      </p>
+                    )}
                   </div>
+
+                  {/* Gender */}
+                  <div className="mb-7">
+                    <label
+                      htmlFor="gender"
+                      className="block text-teal-900 font-medium mb-2"
+                    >
+                      Your Gender <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="gender"
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleChange}
+                      className={`${inputClassName} ${
+                        errors.gender ? "border-red-500" : ""
+                      }`}
+                    >
+                      <option value="">Select your gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Others">Prefer not to say</option>
+                    </select>
+                    {errors.gender && (
+                      <p className="mt-2 text-red-600 text-sm">
+                        {errors.gender}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Age Group */}
+                  <div className="mb-7">
+                    <label
+                      htmlFor="ageGroup"
+                      className="block text-teal-900 font-medium mb-2"
+                    >
+                      Age Group <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      id="ageGroup"
+                      name="ageGroup"
+                      value={formData.ageGroup}
+                      onChange={handleChange}
+                      className={`${inputClassName} ${
+                        errors.ageGroup ? "border-red-500" : ""
+                      }`}
+                    >
+                      <option value="">Select your age group</option>
+                      <option value="18-24">18-24</option>
+                      <option value="25-35">25-35</option>
+                      <option value="36-45">36-45</option>
+                      <option value="46-55">46-55</option>
+                      <option value="56+">56+</option>
+                    </select>
+                    {errors.ageGroup && (
+                      <p className="mt-2 text-red-600 text-sm">
+                        {errors.ageGroup}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Team Interest - Checkboxes */}
+                  <div>
+                    <label className="block text-teal-900 font-medium mb-2">
+                      Which Team(s) are you interested in joining?{" "}
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <div className="flex flex-col space-y-2">
+                      {[
+                        "Content Creation",
+                        "Design",
+                        "Public Relations",
+                        "Tech/Development",
+                        "Marketing/Growth",
+                        "Moderation/Community Management",
+                        "Mentorship Program Support",
+                        "Research & Data Analysis",
+                        "Other",
+                      ].map((team) => (
+                        <label key={team} className="inline-flex items-center">
+                          <input
+                            type="checkbox"
+                            name="teamInterest"
+                            value={team}
+                            checked={formData.teamInterest.includes(team)}
+                            onChange={handleChange}
+                            className="form-checkbox text-teal-600 rounded-md"
+                          />
+                          <span className="ml-2 text-teal-900">{team}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {errors.teamInterest && (
+                      <p className="text-red-600 text-sm">
+                        {errors.teamInterest}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Primary Interest - Dropdown (for conditional logic) */}
+                  {formData.teamInterest.length > 0 && (
+                    <div>
+                      <label
+                        htmlFor="primaryInterest"
+                        className="block text-teal-900 font-medium mt-4 mb-2"
+                      >
+                        From your selections above, which team is your *primary*
+                        interest? <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="primaryInterest"
+                        name="primaryInterest"
+                        value={formData.primaryInterest}
+                        onChange={handleChange}
+                        className={`${inputClassName} ${
+                          errors.primaryInterest ? "border-red-500" : ""
+                        }`}
+                      >
+                        <option value="">Select your top choice</option>
+                        {formData.teamInterest.map((team) => (
+                          <option key={team} value={team}>
+                            {team}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.primaryInterest && (
+                        <p className="mb-5 text-red-600 text-sm">
+                          {errors.primaryInterest}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="button-primary inline-flex items-center justify-center gap-2 mt-6 w-full"
+                  >
+                    Next
+                  </button>
                 </div>
               )}
 
